@@ -37,8 +37,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+// Connect to the Mongo DB
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist"
+);
+
 app.listen(PORT, function() {
-  console.log("listining aon port localhost" + PORT);
+  console.log("listining on port localhost" + PORT);
 });
 
 module.exports = app;
